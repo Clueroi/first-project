@@ -49,15 +49,15 @@ export function Post({ author, publishedAt, content }) {
                         <span>{author.role}</span>
                     </div>
                 </div>
-                <time title={datePublishedFormatted} datetime={publishedAt.toISOString()}>{publishedDateRelativeToNow}</time>
+                <time title={datePublishedFormatted} dateTime={publishedAt.toISOString()}>{publishedDateRelativeToNow}</time>
             </header>
             <div className={styles.content}>
                 {
                     content.map(item=>{
                         if(item.type === 'paragraph'){
-                            return <p>{item.content}</p>
+                            return <p key={item.content}>{item.content}</p>
                         } else if(item.type === 'link'){
-                            return <p><a href="#">{item.content}</a></p>
+                            return <p key={item.content}><a href="#">{item.content}</a></p>
                         }
                     })
                 }
@@ -78,7 +78,7 @@ export function Post({ author, publishedAt, content }) {
 
             <div className={styles.commentList}>
                 {Comments.map(comment=>{
-                    return <Comment content={comment}/>
+                    return <Comment key={comment} content={comment}/>
                 })}
             </div>
         </article>
