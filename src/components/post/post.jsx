@@ -29,10 +29,6 @@ export function Post({ author, publishedAt, content }) {
 
         const newCommentText = event.target.comment.value
 
-        if (newCommentText === ''){
-            return null
-        }
-
         setComments([...Comments, newCommentText])
         setNewCommentText('')
     }
@@ -82,6 +78,7 @@ export function Post({ author, publishedAt, content }) {
                     onChange={handleNewCommentChange}
                     name='comment'
                     placeholder='Deixe seu comentário'
+                    required
                 />
                 <footer>
                     <button type='submit'>Publicar</button>
